@@ -2,7 +2,7 @@
 在做公众号的时候，由于音乐盒功能，需要找音乐的外链，但由于之前使用的http://link.hhtjim.com 由于过度消耗资源暂时无法访问，所以想自己实现一个外链工具，目前是网易云,qq音乐，输入歌名，显示外链请求
 欢迎大家关注：
 ![天台球场的小站](qrcode_for_gh_09cc5b092659_430.jpg)
-# [网易云](#page1)  [qq音乐](#page2)
+# [网易云](#page1)  [qq音乐](#page2)  [百度音乐](#page3)
 # <h2 id="page1">网易云</h2>
 ## 网易云搜索api
 ```
@@ -92,4 +92,67 @@ http://ws.stream.qqmusic.qq.com/${id}.m4a?fromtag=46
 http://music.qq.com/miniportal/static/lyric/{1}/{0}.xml
 {0}=上面取到的试听id
 {1}=上面取到的试听id%100
+```
+# <h2 id="page3">百度音乐</h2>
+## API
+## Music web全接口
+```
+http://tingapi.ting.baidu.com/v1/restserver/ting
+```
+## 搜索歌曲
+```
+http://tingapi.ting.baidu.com/v1/restserver/ting?size=2&_t=1468380543284 
+&format=json&method=baidu.ting.search.catalogSug&query=${1}
+
+${1}位置存放关键字
+```
+返回的数据格式
+```
+{"song":[{"bitrate_fee":"{\"0\":\"129|-1\",\"1\":\"-1|-1\"}","weight":"5420","songname":"海阔天空","songid":"268425156","has_mv":"0","yyr_artist":"0","resource_type_ext":"0","artistname":"韩红","info":"","resource_provider":"1","control":"0000000000","encrypted_songid":"2107fffd7c409584153f0L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"170","songname":"海阔天空","songid":"266907369","has_mv":"0","yyr_artist":"0","resource_type_ext":"0","artistname":"T榜","info":"","resource_provider":"1","control":"0000000000","encrypted_songid":"0307fe8aee90957e78ab8L"},{"bitrate_fee":"{\"0\":\"129|-1\",\"1\":\"-1|-1\"}","weight":"120","songname":"海阔天空","songid":"8877990","has_mv":"0","yyr_artist":"0","resource_type_ext":"0","artistname":"林育群","info":"","resource_provider":"1","control":"0000000000","encrypted_songid":"66068777a6095848d897L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"110","songname":"海阔天空","songid":"73896409","has_mv":"0","yyr_artist":"1","resource_type_ext":"0","artistname":"幼稚园杀手","info":"","resource_provider":"1","control":"0000000000","encrypted_songid":""},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"101","songname":"14.海阔天空","songid":"73888949","has_mv":"0","yyr_artist":"1","resource_type_ext":"0","artistname":"左右乐队","info":"","resource_provider":"1","control":"0100000000","encrypted_songid":""},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"90","songname":"海阔天空-电吉他版","songid":"73984962","has_mv":"0","yyr_artist":"1","resource_type_ext":"0","artistname":"MC雪殇","info":"","resource_provider":"1","control":"0100000000","encrypted_songid":""},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"40","songname":"海阔天空","songid":"74007550","has_mv":"0","yyr_artist":"1","resource_type_ext":"0","artistname":"丛浩楠","info":"","resource_provider":"1","control":"0000000000","encrypted_songid":""},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"10","songname":"海阔天空","songid":"73996756","has_mv":"0","yyr_artist":"1","resource_type_ext":"0","artistname":"许苏峰（Bragg.Xu）","info":"","resource_provider":"1","control":"0000000000","encrypted_songid":""},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"10","songname":"海阔天空","songid":"74043630","has_mv":"0","yyr_artist":"1","resource_type_ext":"0","artistname":"Resound_APEinT","info":"","resource_provider":"1","control":"0000000000","encrypted_songid":""},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","weight":"1","songname":"Hubei.萝卜哥《海阔天空》","songid":"74017327","has_mv":"0","yyr_artist":"1","resource_type_ext":"0","artistname":"萝卜","info":"","resource_provider":"1","control":"0100000000","encrypted_songid":""}],"error_code":22000,"order":"song"}
+
+```
+## LRC歌词
+```
+method=baidu.ting.song.lry {songid: id}
+示例：
+http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.lry&songid=274841326
+``` 
+## 图片地址
+通过songid找到ting_uid
+```
+http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid=274841326
+```
+返回数据
+```
+{"songinfo":{"special_type":0,"pic_huge":"http:\/\/musicdata.baidu.com\/data2\/pic\/cd8dcc4f40cbb37c7dcf0e6c151fbcc6\/522916493\/522916493.jpg@s_0,w_1000","resource_type":"0","pic_premium":"http:\/\/musicdata.baidu.com\/data2\/pic\/cd8dcc4f40cbb37c7dcf0e6c151fbcc6\/522916493\/522916493.jpg@s_0,w_500","havehigh":2,"author":"赵雷","toneid":"0","has_mv":0,"song_id":"274841326","piao_id":"0","artist_id":"13874366","lrclink":"http:\/\/musicdata.baidu.com\/data2\/lrc\/cc971cffe87677aa8986f0f056d20df0\/540728422\/540728422.lrc","relate_status":"0","learn":0,"pic_big":"http:\/\/musicdata.baidu.com\/data2\/pic\/cd8dcc4f40cbb37c7dcf0e6c151fbcc6\/522916493\/522916493.jpg@s_0,w_150","play_type":0,"album_id":"275347355","album_title":"无法长大","bitrate_fee":"{\"0\":\"129|-1\",\"1\":\"-1|-1\"}","song_source":"web","all_artist_id":"13874366","all_artist_ting_uid":"90654808","all_rate":"64,128,256,320,flac","charge":0,"copy_type":"0","is_first_publish":0,"korean_bb_song":"0","pic_radio":"http:\/\/musicdata.baidu.com\/data2\/pic\/cd8dcc4f40cbb37c7dcf0e6c151fbcc6\/522916493\/522916493.jpg@s_0,w_300","has_mv_mobile":0,"title":"成都","pic_small":"http:\/\/musicdata.baidu.com\/data2\/pic\/cd8dcc4f40cbb37c7dcf0e6c151fbcc6\/522916493\/522916493.jpg@s_0,w_90","album_no":"6","resource_type_ext":"0","ting_uid":"90654808"},"error_code":22000,"bitrate":{"show_link":"http:\/\/zhangmenshiting.baidu.com\/data2\/music\/239908cd71a27d737fef95b17d18b97c\/540728460\/540728460.mp3?xcode=824826331591c01cd1fcd5f6c50b1ab0","free":0,"song_file_id":540728460,"file_size":2619789,"file_extension":"mp3","file_duration":327,"file_bitrate":64,"file_link":"http:\/\/yinyueshiting.baidu.com\/data2\/music\/239908cd71a27d737fef95b17d18b97c\/540728460\/540728460.mp3?xcode=824826331591c01cd1fcd5f6c50b1ab0","hash":"8914235b7268b28cd2bc5af56c4acfd73eb55358"}}
+
+图片地址                                      
+pic_url=song_info['songinfo']['pic_big']    
+专辑id                                      
+ting_uid=song_info['songinfo']['ting_uid']  
+专辑名                                       
+album_title=song_info['songinfo']['album_title']
+歌曲名                                       
+title=song_info['songinfo']['title']        
+试听地址                                      
+show_url=song_info['bitrate']['show_link']  
+
+```
+## 获取ting_uid中的歌曲
+```
+http://tingapi.ting.baidu.com/v1/restserver/ting?" \                        
+method=baidu.ting.artist.getSongList&tinguid=90654808&limits=6&use_cluster=1
+```
+## 获取歌手信息
+```
+http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getInfo&tinguid=90654808
+```
+
+## 获取榜单数据
+```
+bang_url="http://tingapi.ting.baidu.com/v1/restserver/ting?size=20&type=2
+         "&_t=1468380543284&format=json&method=baidu.ting.billboard.billList
+type: //1、新歌榜，2、热歌榜，                           
+11、摇滚榜，12、爵士，16、流行                             
+21、欧美金曲榜，22、经典老歌榜，23、情歌对唱榜，24、影视金曲榜，25、网络歌曲榜   
 ```
