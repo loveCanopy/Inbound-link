@@ -2,7 +2,8 @@
 在做公众号的时候，由于音乐盒功能，需要找音乐的外链，但由于之前使用的http://link.hhtjim.com 由于过度消耗资源暂时无法访问，所以想自己实现一个外链工具，目前是网易云，输入歌名，显示外链请求
 欢迎大家关注：
 ![天台球场的小站](qrcode_for_gh_09cc5b092659_430.jpg)
-# 网易云
+[网易云](#page1)[qq音乐](#page2)
+# <h2 id="page1">网易云</h2>
 ## 网易云搜索api
 ```
 URLhttp://s.music.163.com/search/get/
@@ -31,7 +32,7 @@ http://music.163.com/api/song/detail/?id=425137664&ids=[425137664]&csrf_token=
 其中json字段mp3url的值就是外链地址
 http://m2.music.126.net/7o5D4dA6271VktgawcbZFA==/18665309393829604.mp3
 
-# QQ音乐
+# <h2 id="page2">QQ音乐</h2>
 ## QQ搜索API
 ```
 http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n={2}&aggr=1&cr=1&loginUin={3}
@@ -51,6 +52,7 @@ p={1}&catZhida=0&remoteplace=sizer.newclient.next_song&w={0}
 ```
 "f":"108963136|成都|40449|赵雷|1666157|无法长大|2832564|328|6|1|0|13124110|5249759|1411000|0|31539642|32010277|7051417|7511341|0|001bhwUC1gE6ep|001Lr98T0yEWAk|000jE4g74VS43p|0|4009"
 ```
+```
 试听id：108963136
 歌名：成都
 歌曲id：001bhwUC1gE6ep
@@ -61,7 +63,7 @@ singerMid：001Lr98T0yEWAk
 专辑页：https://y.qq.com/n/yqq/album/000jE4g74VS43p.html#
 singerid:40449
 image_id:1666157
-
+```
 ## 获取歌曲图片API
 ### 第一种 通过专辑图片
 ```
