@@ -33,6 +33,7 @@ http://m2.music.126.net/7o5D4dA6271VktgawcbZFA==/18665309393829604.mp3
 
 # QQ音乐
 ## QQ搜索API
+```
 http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n={2}&aggr=1&cr=1&loginUin={3}
 &format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&
 p={1}&catZhida=0&remoteplace=sizer.newclient.next_song&w={0}
@@ -40,52 +41,53 @@ p={1}&catZhida=0&remoteplace=sizer.newclient.next_song&w={0}
 {1}=查询的页码数
 {2}=当前页的返回数量
 {3}=默认为0,是登录的QQ号ID
+```
 示例：
 搜索歌名成都，只返回第一行 默认你第一行为搜索匹配度最高的一行
 ```
 {"code":0,"data":{"keyword":"","priority":0,"qc":[],"semantic":{"curnum":0,"curpage":1,"list":[],"totalnum":0},"song":{"curnum":2,"curpage":1,"list":[{"albumName_hilight":"无法长大","chinesesinger":0,"docid":"13598769090983139333","f":"108963136|成都|40449|赵雷|1666157|无法长大|2832564|328|6|1|0|13124110|5249759|1411000|0|31539642|32010277|7051417|7511341|0|001bhwUC1gE6ep|001Lr98T0yEWAk|000jE4g74VS43p|0|4009","fiurl":"","fnote":2009,"fsinger":"赵雷","fsinger2":"","fsong":"成都","grp":[{"albumName_hilight":"<span class=\"c_tx_highlight\">成都</span>","chinesesinger":0,"docid":"2416530247501575298","f":"200790315|成都|40449|赵雷|1656856|成都|2829364|328|6|1|0|13137599|5255188|1411000|0|31800452|32270434|7030541|7529931|0|003TLWoN0gQnP5|001Lr98T0yEWAk|003ltiMR4RSrgo|31|0","fiurl":"","fnote":0,"fsinger":"赵雷","fsinger2":"","fsong":"成都","isupload":0,"isweiyun":0,"lyric":"","lyric_hilight":"","mv":"","nt":10000,"only":0,"pubTime":1477238400,"pure":0,"singerMID":"001Lr98T0yEWAk","singerMID2":"","singerName2_hilight":"","singerName_hilight":"赵雷","singerid":40449,"singerid2":0,"songName_hilight":"<span class=\"c_tx_highlight\">成都</span>","t":1,"tag":0,"ver":0}],"isupload":0,"isweiyun":0,"lyric":"","lyric_hilight":"","mv":"","nt":10000,"only":0,"pubTime":1482249600,"pure":0,"singerMID":"001Lr98T0yEWAk","singerMID2":"","singerName2_hilight":"","singerName_hilight":"赵雷","singerid":40449,"singerid2":0,"songName_hilight":"<span class=\"c_tx_highlight\">成都</span>","t":1,"tag":0,"ver":0}],"totalnum":338},"totaltime":5.800000000000000e-05,"zhida":{"chinesesinger":0,"type":0}},"message":"","notice":"","subcode":0,"time":1494158879,"tips":""}
 ```
 分析json格式，歌曲名称，歌手，专辑，还有其中的f的属性
+```
 "f":"108963136|成都|40449|赵雷|1666157|无法长大|2832564|328|6|1|0|13124110|5249759|1411000|0|31539642|32010277|7051417|7511341|0|001bhwUC1gE6ep|001Lr98T0yEWAk|000jE4g74VS43p|0|4009"
+```
 试听id：108963136
 歌名：成都
 歌曲id：001bhwUC1gE6ep
-歌曲页：
-```
-https://y.qq.com/n/yqq/song/001bhwUC1gE6ep.html
-```
+歌曲页：https://y.qq.com/n/yqq/song/001bhwUC1gE6ep.html
 singerMid：001Lr98T0yEWAk
-歌手页：
-```
-https://y.qq.com/n/yqq/singer/001Lr98T0yEWAk.html#
-```
+歌手页：https://y.qq.com/n/yqq/singer/001Lr98T0yEWAk.html#
 专辑图片：000jE4g74VS43p
-专辑页：
-```
-https://y.qq.com/n/yqq/album/000jE4g74VS43p.html#
-```
+专辑页：https://y.qq.com/n/yqq/album/000jE4g74VS43p.html#
 singerid:40449
 image_id:1666157
 
 ## 获取歌曲图片API
 ### 第一种 通过专辑图片
+```
 http://imgcache.qq.com/music/photo/mid_album_90/{1}/{2}/{0}.jpg
 {0}=上面取到的Img
 {1]=上面取到的Img的倒数第二个字符
 {2}=上面取到的Img的最后一个字符
+```
 示例：
 http://imgcache.qq.com/music/photo/mid_album_90/3/p/000jE4g74VS43p.jpg
 ### 第二种 通过专辑图片
+```
 http://y.gtimg.cn/music/photo_new/T002R300x300M000{0}.jpg?max_age=25920000
 {0}=上面取到的Img
+```
 ### 第三种 通过image_id
+```
 http://imgcache.qq.com/music/photo/album_${width}/${image_id%100}/${width}_albumpic_${image_id}_0.jpg
-
+```
 ## 获取试听地址
+```
 http://ws.stream.qqmusic.qq.com/${id}.m4a?fromtag=46
-
+```
 ## 获取歌词
+```
 http://music.qq.com/miniportal/static/lyric/{1}/{0}.xml
 {0}=上面取到的试听id
 {1}=上面取到的试听id%100
-
+```
